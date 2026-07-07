@@ -6,7 +6,7 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 # Install dependencies
 RUN npm ci
@@ -26,7 +26,7 @@ WORKDIR /app
 RUN apk add --no-cache dumb-init
 
 # Copy package files
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 # Install only production dependencies
 RUN npm ci --only=production
